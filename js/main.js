@@ -78,8 +78,8 @@ NombreyApellido()
 
 realizarReserva()
 
-console.log("Reservas realizadas:");
+console.log("Reservas realizadas:")
 
 console.log(reservasRealizadas)
 
-console.log("Saludos!");
+console.log("Saludos!")
