@@ -55,7 +55,7 @@ function realizarReserva(){
 
     var DiasEnElMes = obtenerDiasEnElMes(reservaMesdeviaje)
 
-    console.log("El mes seleccionado tiene"+" "+ DiasEnElMes+"dias 🗓️")
+    console.log("El mes seleccionado tiene"+" "+ DiasEnElMes+" dias 🗓️")
     if( DiasEnElMes === 0){
         alert("Por favor ingrese un nombre de mes valido!")
     }else if( reservaDiadeviaje >=1 && reservaDiadeviaje<=DiasEnElMes){ /*rango de dias segun el mes ingresado*/
