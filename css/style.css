@@ -1,0 +1,33 @@
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid #6a99c9; }
+  header .logo {
+    width: 120px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 4px; }
+  header nav {
+    margin-top: -10px; }
+    header nav ul {
+      display: flex;
+      list-style-type: none;
+      margin-top: 35px; }
+      header nav ul li a {
+        color: black;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold; }
+
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 60px; }
+
+h3 {
+  color: rgba(39, 39, 131, 0.877); }
+
+/*# sourceMappingURL=style.css.map */

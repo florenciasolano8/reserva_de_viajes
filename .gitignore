@@ -1,0 +1,5 @@
+# Ignorar la carpeta scss
+scss/
+
+# Ignorar la carpeta layout
+layout/
