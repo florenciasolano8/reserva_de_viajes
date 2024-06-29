@@ -64,7 +64,7 @@ if(inputMes && inputDia && searchBtn){
                 const reservaExistente = reservas.find(reserva =>
                     reserva.mes === mesValue && reserva.dia === diaValue
                 )
-                if(reservaExistente){
+            if(reservaExistente){
                     console.log(`Ya hay una reserva para el ${diaValue} de ${element.nombremes}. Ingrese otra fecha`)
 
                 }

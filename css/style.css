@@ -30,4 +30,21 @@ h1 {
 h3 {
   color: rgba(39, 39, 131, 0.877); }
 
+#packs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px; }
+
+.card {
+  width: 18rem; }
+  .card .card-body {
+    background-color: #dcdada; }
+    .card .card-body .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+
 /*# sourceMappingURL=style.css.map */

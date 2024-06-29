@@ -34,14 +34,18 @@ let combos = document.getElementById("packs")
 function showpacks (itemsArray){
     itemsArray.forEach(item =>{
         const card = document.createElement("div")
-        card.innerHTML = `<h2>${item.titulo}</h2>
-                          <h3>${item.subtitulo}</h3>         
-                          <p>* ${item.destino1}</p> 
-                          <p>* ${item.destino2}</p> 
-                          <p> 🗓️ ${item.duracion}</p>    
-                          <p>$ ${item.precio} por persona</p>              
-                        <button class="packReservar" id="${item.id}">Reservar </button>`
-        combos.appendChild(card)    
+        card.classList.add("card")
+        card.innerHTML = `
+                         <div class="card-body">
+                          <h2 class= "card-title">${item.titulo}</h2>
+                          <h3 class= "card-title">${item.subtitulo}</h3>         
+                          <p class= "card-text">* ${item.destino1}</p> 
+                          <p class= "card-text">* ${item.destino2}</p> 
+                          <p class= "card-text"> 🗓️ ${item.duracion}</p>    
+                          <p class= "card-text">$ ${item.precio} por persona</p>              
+                         <button class="btn btn-primary" id="${item.id}">Reservar </button>
+                        </div>`
+                        combos.appendChild(card)    
     })
     addReservationButton()
 }
@@ -64,7 +68,7 @@ function addReservationButton(){
 
            }
            
-            console.log(cartPacks)  /*preguntar de este console*/
+            console.log(cartPacks) 
        
             localStorage.setItem("cartPacks",JSON. stringify(cartPacks))
        
