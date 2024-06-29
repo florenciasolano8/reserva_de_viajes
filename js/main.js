@@ -43,7 +43,7 @@ function showpacks (itemsArray){
                           <p class= "card-text">* ${item.destino2}</p> 
                           <p class= "card-text"> 🗓️ ${item.duracion}</p>    
                           <p class= "card-text">$ ${item.precio} por persona</p>              
-                         <button class="btn btn-primary" id="${item.id}">Reservar </button>
+                         <button class="packReservar" id="${item.id}">Reservar </button>
                         </div>`
                         combos.appendChild(card)    
     })

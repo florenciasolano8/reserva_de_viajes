@@ -5,19 +5,28 @@ let cart = document.getElementById("reservation")
 
 function carrito(cartItems){
     let totalPagar = 0
+    const cardsContainer = document.createElement("div")
+    cardsContainer.classList.add("cards-container")
     cartItems.forEach(item =>{
+        
         const card = document.createElement("div")
         const total = item.precio * item.cantidad
         totalPagar += total
+        card.classList.add("card")
         card.innerHTML =  `
-                        <h2>${item.titulo}</h2>
-                        <p>Cantidad de vuelos:  ${item.cantidad}</p>
-                        <p>Total: $${total}</p>`
-                        cart.appendChild(card)
+                        <div class="card-body">
+                        <h2 class= "card-title">${item.titulo}</h2>
+                        <p class="card-text">Cantidad de vuelos:  ${item.cantidad}</p>
+                        <p class="card-text">Total: $${total}</p>
+                        </div>`
+                        cardsContainer.appendChild(card)
     })
+            cart.appendChild(cardsContainer)
+    
     const totalFinal= document.createElement("div")
+    totalFinal.classList.add("totalfinal")
     totalFinal.innerHTML= `
-                        <h3>TOTAL A PAGAR: $${totalPagar}</h3>`
+                        <h3 class="subtitulopagar">TOTAL A PAGAR: $${totalPagar}</h3>`
                         cart.appendChild(totalFinal)
                     }
 carrito(reservaStorage)
@@ -80,6 +89,7 @@ if(inputMes && inputDia && searchBtn){
 
                     reservas.push(reserva)
                     localStorage.setItem('reservas', JSON.stringify(reservas))
+                    mensaje.innerHTML= `<p>${nombreValue} ${apellidoValue} tiene una reserva para el ${diaValue} de ${element.nombremes}</p>`
                 }
                }
             }

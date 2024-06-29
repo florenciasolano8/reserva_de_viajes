@@ -3,3 +3,6 @@ scss/
 
 # Ignorar la carpeta layout
 layout/
+
+
+.sass-cache/
