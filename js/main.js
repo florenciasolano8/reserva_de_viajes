@@ -2,30 +2,30 @@ const packs = [
 
 {
     id: 1,
-    titulo:"Aventura en la naturaleza",
-    subtitulo:"Destinos incluidos:",
-    destino1: "Patagonia Argentina",
-    destino2: "Costa Rica",
-    duracion: "14 dias",
-    precio: 5000
+    title:"Aventura en la naturaleza",
+    subtitle:"Destinos incluidos:",
+    destination1: "Patagonia Argentina",
+    destination2: "Costa Rica",
+    duration: "14 dias",
+    price: 5000
 },
 {
     id: 2,
-    titulo:"Cultura y Tradición",
-    subtitulo:"Destinos incluidos:",
-    destino1: "Japon",
-    destino2: "Italia",
-    duracion: "12 dias",
-    precio: 5100
+    title:"Cultura y Tradición",
+    subtitle:"Destinos incluidos:",
+    destination1: "Japon",
+    destination2: "Italia",
+    duration: "12 dias",
+    price: 5100
 },
 {
     id: 3,
-    titulo:"Relax y Bienestar",
-    subtitulo:"Destinos incluidos:",
-    destino1: "Islas Maldivas",
-    destino2: "Tailandia",
-    duracion: "10 dias",
-    precio: 6000
+    title:"Relax y Bienestar",
+    subtitle:"Destinos incluidos:",
+    destination1: "Islas Maldivas",
+    destination2: "Tailandia",
+    duration: "10 dias",
+    price: 6000
 }
 ]
 
@@ -37,13 +37,13 @@ function showpacks (itemsArray){
         card.classList.add("card")
         card.innerHTML = `
                          <div class="card-body">
-                          <h2 class= "card-title">${item.titulo}</h2>
-                          <h3 class= "card-title">${item.subtitulo}</h3>         
-                          <p class= "card-text">* ${item.destino1}</p> 
-                          <p class= "card-text">* ${item.destino2}</p> 
-                          <p class= "card-text"> 🗓️ ${item.duracion}</p>    
-                          <p class= "card-text">$ ${item.precio} por persona</p>              
-                         <button class="packReservar" id="${item.id}">Reservar </button>
+                          <h2 class= "card-title">${item.title}</h2>
+                          <h3 class= "card-title">${item.subtitle}</h3>         
+                          <p class= "card-text">* ${item.destination1}</p> 
+                          <p class= "card-text">* ${item.destination2}</p> 
+                          <p class= "card-text"> 🗓️ ${item.duration}</p>    
+                          <p class= "card-text">$ ${item.price} por persona</p>              
+                         <button class="packReserve" id="${item.id}">Reserve </button>
                         </div>`
                         combos.appendChild(card)    
     })
@@ -52,18 +52,18 @@ function showpacks (itemsArray){
 showpacks(packs)
 
 function addReservationButton(){
-    addButton = document.querySelectorAll(".packReservar")
+    addButton = document.querySelectorAll(".packReserve")
     addButton.forEach(button=>{
         button.onclick = (e)=>{
             const itemId = e.currentTarget.id
             const selectedPack = packs.find(item => item.id == itemId)
             
-            let existeItem = cartPacks.find(item => item.id == selectedPack.id)  
-            if(existeItem){
-            existeItem.cantidad = existeItem.cantidad +1
+            let itemExist = cartPacks.find(item => item.id == selectedPack.id)  
+            if(itemExist){
+                itemExist.quantity = itemExist.quantity +1
            }
             else{
-            selectedPack.cantidad = 1
+            selectedPack.quantity = 1
             cartPacks.push(selectedPack)
 
            }

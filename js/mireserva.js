@@ -1,22 +1,22 @@
-let reservaStorage = localStorage.getItem("cartPacks")
-reservaStorage = reservaStorage ? JSON.parse(reservaStorage) : []
+let reservationStorage = localStorage.getItem("cartPacks")
+reservationStorage = reservationStorage ? JSON.parse(reservationStorage) : []
 
 let cart = document.getElementById("reservation")
 
-function carrito(cartItems){
-    let totalPagar = 0
+function reservationCart(cartItems){
+    let totalToPay = 0
     const cardsContainer = document.createElement("div")
     cardsContainer.classList.add("cards-container")
     cartItems.forEach(item =>{
         
         const card = document.createElement("div")
-        const total = item.precio * item.cantidad
-        totalPagar += total
+        const total = item.price * item.quantity
+        totalToPay += total
         card.classList.add("card")
         card.innerHTML =  `
                         <div class="card-body">
-                        <h2 class= "card-title">${item.titulo}</h2>
-                        <p class="card-text">Cantidad de vuelos:  ${item.cantidad}</p>
+                        <h2 class= "card-title">${item.title}</h2>
+                        <p class="card-text">Cantidad de vuelos:  ${item.quantity}</p>
                         <p class="card-text">Total: $${total}</p>
                         </div>`
                         cardsContainer.appendChild(card)
@@ -26,69 +26,67 @@ function carrito(cartItems){
     const totalFinal= document.createElement("div")
     totalFinal.classList.add("totalfinal")
     totalFinal.innerHTML= `
-                        <h3 class="subtitulopagar">TOTAL A PAGAR: $${totalPagar}</h3>`
+                        <h3 class="subtitulopagar">TOTAL A PAGAR: $${totalToPay}</h3>`
                         cart.appendChild(totalFinal)
                     }
-carrito(reservaStorage)
+    reservationCart(reservationStorage)
 
-
-
-const meses = [
-    { nombremes:"enero",dias:31},
-    { nombremes:"febrero",dias:29},
-    { nombremes:"marzo",dias:31},
-    { nombremes:"abril",dias:30},
-    { nombremes:"mayo",dias:31},
-    { nombremes:"junio",dias:30},
-    { nombremes:"julio",dias:31},
-    { nombremes:"agosto",dias:31},
-    { nombremes:"septiembre",dias:30},
-    { nombremes:"octubre",dias:31},
-    { nombremes:"noviembre",dias:30},
-    { nombremes:"diciembre",dias:31}]
+const months = [
+    { monthname:"enero",days:31},
+    { monthname:"febrero",days:29},
+    { monthname:"marzo",days:31},
+    { monthname:"abril",days:30},
+    { monthname:"mayo",days:31},
+    { monthname:"junio",days:30},
+    { monthname:"julio",days:31},
+    { monthname:"agosto",days:31},
+    { monthname:"septiembre",days:30},
+    { monthname:"octubre",days:31},
+    { monthname:"noviembre",days:30},
+    { monthname:"diciembre",days:31}]
     
- let inputNombre = document.getElementById("nombre")
- let inputApellido = document.getElementById("apellido")
- let inputMes = document.getElementById("searchMes")
- let inputDia = document.getElementById("searchDia")
+ let inputName = document.getElementById("name")
+ let inputLastName = document.getElementById("lastname")
+ let inputMonth = document.getElementById("searchMonth")
+ let inputDay = document.getElementById("searchDay")
  let searchBtn = document.getElementById("searchBtn")
 
  
-if(inputMes && inputDia && searchBtn){
+if(inputMonth && inputDay && searchBtn){
     searchBtn.onclick = () =>{
-        const nombreValue = inputNombre.value
-        const apellidoValue = inputApellido.value
-        const mesValue = inputMes.value.toLowerCase()
-        const diaValue = parseInt(inputDia.value)
-        const element = meses.find ((mes) => mes.nombremes.toLowerCase() === mesValue)
+        const nameValue = inputName.value
+        const lastNameValue = inputLastName.value
+        const monthValue = inputMonth.value.toLowerCase()
+        const dayValue = parseInt(inputDay.value)
+        const element = months.find ((month) => month.monthname.toLowerCase() === monthValue)
     
-        let reservas = localStorage.getItem('reservas')
-        reservas = reservas ? JSON.parse(reservas) : []  
+        let reservations = localStorage.getItem('reservations')
+        reservations = reservations ? JSON.parse(reservations) : []  
         
        
-            if(!element || !(diaValue > 0 && diaValue <=element.dias)){
+            if(!element || !(dayValue > 0 && dayValue <=element.days)){
                console.log(`No tenemos disponible`)
                }else{
-                const reservaExistente = reservas.find(reserva =>
-                    reserva.mes === mesValue && reserva.dia === diaValue
+                const existingReservation = reservations.find(reserva =>
+                    reserva.month === monthValue && reserva.day === dayValue
                 )
-            if(reservaExistente){
-                    console.log(`Ya hay una reserva para el ${diaValue} de ${element.nombremes}. Ingrese otra fecha`)
+            if(existingReservation){
+                    console.log(`Ya hay una reserva para el ${dayValue} de ${element.monthname}. Ingrese otra fecha`)
 
                 }
                 else{
-                    console.log(`Tenemos disponible el ${diaValue} de ${element.nombremes} `)
+                    console.log(`Tenemos disponible el ${dayValue} de ${element.monthname} `)
 
                     const reserva={
-                        nombre:nombreValue,
-                        apellido:apellidoValue,
-                        mes:mesValue,
-                        dia:diaValue
+                        name:nameValue,
+                        lastName:lastNameValue,
+                        month:monthValue,
+                        day:dayValue
                     }
 
-                    reservas.push(reserva)
-                    localStorage.setItem('reservas', JSON.stringify(reservas))
-                    mensaje.innerHTML= `<p>${nombreValue} ${apellidoValue} tiene una reserva para el ${diaValue} de ${element.nombremes}</p>`
+                    reservations.push(reserva)
+                    localStorage.setItem('reservations', JSON.stringify(reservations))
+                    message.innerHTML= `<p>${nameValue} ${lastNameValue} tiene una reserva para el ${dayValue} de ${element.monthname}</p>`
                 }
                }
             }
