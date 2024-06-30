@@ -47,7 +47,6 @@ const meses = [
     { nombremes:"noviembre",dias:30},
     { nombremes:"diciembre",dias:31}]
     
- document.addEventListener('DOMContentLoaded', function(){   
  let inputNombre = document.getElementById("nombre")
  let inputApellido = document.getElementById("apellido")
  let inputMes = document.getElementById("searchMes")
@@ -94,6 +93,6 @@ if(inputMes && inputDia && searchBtn){
                }
             }
     }
-})
+
 
 

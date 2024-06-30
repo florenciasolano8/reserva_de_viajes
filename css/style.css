@@ -65,10 +65,6 @@ h3 {
     flex-direction: row; }
     #reservation .card .card-body {
       background-color: #EEEEEE; }
-      #reservation .card .card-body .button {
-        display: flex;
-        justify-content: center;
-        align-items: center; }
 
 .totalfinal {
   display: flex;
@@ -84,5 +80,40 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-direction: column; }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px; }
+  .button-container .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; }
+    .button-container .btn .btn-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  border-top: 1px solid #6a99c9; }
+  footer .redes {
+    margin-top: 20px;
+    margin-left: 5px; }
+    footer .redes .contact-item {
+      width: 35px; }
+  footer .contacto {
+    margin-left: 100px; }
+    footer .contacto p {
+      color: black;
+      margin-top: 25px; }
 
 /*# sourceMappingURL=style.css.map */
