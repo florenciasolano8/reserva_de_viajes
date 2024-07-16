@@ -43,6 +43,35 @@ h3 {
     flex-direction: row; }
     #packs .card .card-body {
       background-color: #EEEEEE; }
+      #packs .card .card-body .card-text {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      #packs .card .card-body .card-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        margin-top: 10px;
+        color: #32259a; }
+      #packs .card .card-body .input-card {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        display: flex;
+        align-items: center;
+        flex-direction: column; }
+        #packs .card .card-body .input-card .packReserve {
+          margin-top: 8px;
+          background-color: #473ba1;
+          color: white;
+          font-weight: bold;
+          border-radius: 50%; }
 
 #reservation {
   display: flex;
@@ -81,23 +110,18 @@ h3 {
   align-items: center;
   flex-direction: column; }
 
-.button-container {
+.botonreserva {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 30px; }
-  .button-container .btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none; }
-    .button-container .btn .btn-link {
+  margin-top: 20px; }
+  .botonreserva .button-mireserva {
+    margin-bottom: 30px;
+    background-color: #4A249D;
+    border-radius: 50%; }
+    .botonreserva .button-mireserva .text {
       text-decoration: none;
-      color: inherit;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
+      color: white; }
 
 footer {
   display: flex;
@@ -115,5 +139,11 @@ footer {
     footer .contacto p {
       color: black;
       margin-top: 25px; }
+
+/*
+*{
+    background-color: #EEF7FF;
+}
+    */
 
 /*# sourceMappingURL=style.css.map */

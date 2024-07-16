@@ -8,7 +8,7 @@
     <title>Tu reserva</title>
 
     <!--SEO ON PAGE-->
-    <meta name="description" content="Consulta tus reservas, encuentra detalles de tus viajes y abona ">
+    <meta name="description" content="Reserva un viaje con nosotros! Puedes consultar y abonar en el instante">
     <!--META KEYWORDS-->
     <meta name="keywords" content="reservas, viajes,gestion de reserva,consultas,contacto">
     <!--META PHONE-->
@@ -46,6 +46,9 @@
 
     <main>     
         <h1>✈️Tu reserva✈️</h1>
+        <div class="button-container">
+
+        </div>
         <section id="reservation"></section>
         <div class="form">
         <label for="name">Nombre</label>
@@ -60,7 +63,7 @@
         <label for="searchDay">Dia</label>
         <input type="number" id="searchDay" name="day" placeholder="Escribe el día" autocomplete="off">
     
-        <button id="searchBtn">Buscar</button>
+        <button id="searchBtn">Reservar</button>
         <div id="message"></div>
     </div>
 
@@ -68,6 +71,7 @@
     <div class="button-container">
         <button type="button" class="btn btn-secondary">
             <a href="../index.html" class="btn-link">Volver al Inicio</a>
+            <button class="delete-btn" onclick="clearForm()">Borrar Reserva</button>
         </button>
     </div>
 </main>
