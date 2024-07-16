@@ -1,21 +1,21 @@
 const packs = [
 {
     id: 1,
-    image: "../img/aventuraenlanaturaleza.png" ,
+    image: "img/aventuraenlanaturaleza.png" ,
     title:"Aventura y Naturaleza",
     duration: "14 dias",
     price: 5000
 },
 {
     id: 2,
-    image: "../img/culturaytradicion.png" ,
+    image: "img/culturaytradicion.png" ,
     title:"Cultura y Tradición",
     duration: "12 dias",
     price: 5100
 },
 {
     id: 3,
-    image: "../img/relaxybienestar.png" ,
+    image: "img/relaxybienestar.png" ,
     title:"Relax y Bienestar",
     duration: "10 dias",
     price: 6000
