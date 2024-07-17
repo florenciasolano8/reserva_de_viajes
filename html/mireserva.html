@@ -45,10 +45,8 @@
 
     <main>     
         <h1>✈️Tu reserva✈️</h1>
-        <div class="button-container">
-
-        </div>
         <section id="reservation"></section>
+        <h4>Completa con tus datos</h4>
         <div class="form">
         <label for="name">Nombre</label>
         <input type="text" id="name" name="name" placeholder="Nombre" autocomplete="given-name">
@@ -61,17 +59,16 @@
     
         <label for="searchDay">Dia</label>
         <input type="number" id="searchDay" name="day" placeholder="Escribe el día" autocomplete="off">
-    
-        <button id="searchBtn">Reservar</button>
+      
+        <div class="botonreserva">
+        <button class = "button-mireserva btn" id="searchBtn">Reservar</button>
         <div id="message"></div>
+        </div>
     </div>
 
 
-    <div class="button-container">
-        <button type="button" class="btn btn-secondary">
-            <a href="../index.html" class="btn-link">Volver al Inicio</a>
-            <button class="delete-btn" onclick="clearForm()">Borrar Reserva</button>
-        </button>
+    <div class="botonreserva">
+            <button class="button-mireserva btn" onclick="clearForm()">Borrar Reserva</button>
     </div>
 </main>
     </main>

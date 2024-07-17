@@ -17,7 +17,7 @@ function reservationCart(cartItems) {
                         <h2 class= "card-title">${item.title}</h2>
                         <p class="card-text">Cantidad de vuelos:  ${item.quantity}</p>
                         <p class="card-text">Total: $${total}</p>
-                        <button class="delete-btn" onclick="deleteCard(event)"> ✖️ </button>
+                        <button class="delete-btn" onclick="deleteCard(event)"> X </button>
                         </div>` 
         cardsContainer.appendChild(card);
     });
@@ -27,7 +27,7 @@ function reservationCart(cartItems) {
     const totalFinal = document.createElement("div");
     totalFinal.classList.add("totalfinal");
     totalFinal.innerHTML = `<h3 class="subtitulopagar">TOTAL A PAGAR: $${totalToPay}</h3>
-                         <button class=delete-btn" onclick="deleteAllCards()">Vaciar carrito</button>`;
+                         <button class="button-clear btn " onclick="deleteAllCards()">Vaciar carrito</button>`;
     cart.appendChild(totalFinal);
 }
 
@@ -52,7 +52,7 @@ function clearForm(){
     const day = parseInt(document.getElementById("searchDay").value)
 
     let reservations = localStorage.getItem("reservations")    
-    reservations = reservations ? JSON.parse(reservations) : []     
+    reservations = reservations ? JSON.parse(reservations) : []     //ver esto 
 
     const reservationIndex = reservations.findIndex(reservation =>
         reservation.name === name &&
@@ -111,7 +111,7 @@ if (inputMonth && inputDay && searchBtn) {
         reservations = reservations ? JSON.parse(reservations) : [];
 
         if (!element || !(dayValue > 0 && dayValue <= element.days)) {
-            message.innerHTML = `<p>No tenemos disponible</p>`;
+            message.innerHTML = `<p><br>No tenemos disponible</p>`;
         } else {
             const existingReservation = reservations.find(
                 (reserva) => reserva.month === monthValue && reserva.day === dayValue
