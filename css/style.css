@@ -30,20 +30,20 @@ h1 {
 h3 {
   color: rgba(39, 39, 131, 0.877); }
 
-#packs {
+#packs, #reservation {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
   align-items: center;
   flex-wrap: wrap;
   gap: 25px; }
-  #packs .card {
+  #packs .card, #reservation .card {
     width: 18rem;
     display: flex;
     flex-direction: row; }
-    #packs .card .card-body {
+    #packs .card .card-body, #reservation .card .card-body {
       background-color: #EEEEEE; }
-      #packs .card .card-body .card-text {
+      #packs .card .card-body .card-text, #reservation .card .card-body .card-text {
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
         font-weight: 400;
@@ -51,14 +51,14 @@ h3 {
         display: flex;
         justify-content: center;
         align-items: center; }
-      #packs .card .card-body .card-title {
+      #packs .card .card-body .card-title, #reservation .card .card-body .card-title {
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 24px;
         margin-top: 10px;
         color: #32259a; }
-      #packs .card .card-body .input-card {
+      #packs .card .card-body .input-card, #reservation .card .card-body .input-card {
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
         font-weight: 400;
@@ -66,7 +66,7 @@ h3 {
         display: flex;
         align-items: center;
         flex-direction: column; }
-        #packs .card .card-body .input-card .packReserve {
+        #packs .card .card-body .input-card .packReserve, #reservation .card .card-body .input-card .packReserve {
           margin-top: 8px;
           background-color: #473ba1;
           color: white;

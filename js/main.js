@@ -22,19 +22,17 @@ const packs = [
 }
 ]
 
-//nuevo
 let cartPacks = loadCartPacks()
 
 function loadCartPacks(){
     const storedCartsPacks = localStorage.getItem("cartPacks")
-    return storedCartsPacks ? JSON.parse(storedCartsPacks) : []//cambiar esto mas simple
+    return storedCartsPacks ? JSON.parse(storedCartsPacks) : []
 }
 
 function saveCartPacks(){
     localStorage.setItem("cartPacks", JSON.stringify(cartPacks))
 }
 
-///
 
 
 
@@ -50,11 +48,11 @@ function showpacks (itemsArray){
                           <h2 class= "card-title">${item.title}</h2>
                           <p class= "card-text"> 🗓️ ${item.duration}</p>    
                           <p class= "card-text">Desde $${item.price} por persona</p>        
-                           <div class= "input-card">
-                            <label for= "quantity-${item.id}">Cantidad de reservas</label>
-                            <input type="number" id="quantity-${item.id}" name = "quantity-${item.id} value="1" min="1" required>
-                            <button class="packReserve btn " id="${item.id}">Reservar </button>
-                            </div>      
+                          <div class= "input-card">
+                          <label for= "quantity-${item.id}">Cantidad de reservas</label>
+                          <input type="number" id="quantity-${item.id}" name = "quantity-${item.id} value="1" min="1" required>
+                          <button class="packReserve btn " id="${item.id}">Reservar </button>
+                          </div>      
                         </div>`
                         combos.appendChild(card)    
     })
@@ -91,9 +89,7 @@ function addReservationButton(){
            
             console.log(cartPacks) 
             saveCartPacks()
-       
-        //    localStorage.setItem("cartPacks",JSON. stringify(cartPacks))
-       
+           
         }
     })
 

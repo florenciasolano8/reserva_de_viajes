@@ -52,7 +52,7 @@ function clearForm(){
     const day = parseInt(document.getElementById("searchDay").value)
 
     let reservations = localStorage.getItem("reservations")    
-    reservations = reservations ? JSON.parse(reservations) : []     //ver esto 
+    reservations = reservations ? JSON.parse(reservations) : []     
 
     const reservationIndex = reservations.findIndex(reservation =>
         reservation.name === name &&
