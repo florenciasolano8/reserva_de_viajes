@@ -32,43 +32,98 @@ function reservationCart(cartItems) {
 }
 
 function deleteAllCards() {
-    localStorage.removeItem("cartPacks");
-    document.getElementById("reservation").innerHTML = "";
-    reservationCart([]);
+    Swal.fire({
+        title: "Estas seguro?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si vaciar!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.removeItem("cartPacks");
+            document.getElementById("reservation").innerHTML = "";
+            reservationCart([]);
+
+          Swal.fire({
+            title: "Listo!",
+            icon: "success"
+          });
+        }
+      });
+
 }
 
 function deleteCard(index) {
-    reservationStorage.splice(index, 1);
-    localStorage.setItem("cartPacks", JSON.stringify(reservationStorage));
+    Swal.fire({
+        title: "Estas seguro?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si borrar!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            reservationStorage.splice(index, 1);
+            localStorage.setItem("cartPacks", JSON.stringify(reservationStorage));
+            document.getElementById("reservation").innerHTML = "";
+            reservationCart(reservationStorage);
 
-    document.getElementById("reservation").innerHTML = "";
-    reservationCart(reservationStorage);
+          Swal.fire({
+            title: "Borrado!",
+            icon: "success"
+          });
+        }
+      });
+
 }
 
 function clearForm(){
-    const name = document.getElementById("name").value
-    const lastname = document.getElementById("lastname").value
-    const month = document.getElementById("searchMonth").value.toLowerCase()
-    const day = parseInt(document.getElementById("searchDay").value)
+    Swal.fire({
+        title: "Estas seguro?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si borrar!"
+      }).then((result) => {
+        if (result.isConfirmed) {
 
-    let reservations = localStorage.getItem("reservations")    
-    reservations = reservations ? JSON.parse(reservations) : []     //ver esto 
+        const name = document.getElementById("name").value
+        const lastname = document.getElementById("lastname").value
+        const month = document.getElementById("searchMonth").value.toLowerCase()
+        const day = parseInt(document.getElementById("searchDay").value)
+    
+        let reservations = localStorage.getItem("reservations")    
+        reservations = reservations ? JSON.parse(reservations) : []     //ver esto 
+    
+        const reservationIndex = reservations.findIndex(reservation =>
+            reservation.name === name &&
+            reservation.lastName === lastname &&
+            reservation.month === month &&
+            reservation.day === day
+        )
+    
+        if(reservationIndex !== -1){
+            reservations.splice(reservationIndex, 1)
+            localStorage.setItem("reservations", JSON.stringify(reservations))
+        }
+        document.getElementById("name").value = ""
+        document.getElementById("lastname").value = ""
+        document.getElementById("searchMonth").value = ""
+        document.getElementById("searchDay").value = ""
 
-    const reservationIndex = reservations.findIndex(reservation =>
-        reservation.name === name &&
-        reservation.lastName === lastname &&
-        reservation.month === month &&
-        reservation.day === day
-    )
 
-    if(reservationIndex !== -1){
-        reservations.splice(reservationIndex, 1)
-        localStorage.setItem("reservations", JSON.stringify(reservations))
-    }
-    document.getElementById("name").value = ""
-    document.getElementById("lastname").value = ""
-    document.getElementById("searchMonth").value = ""
-    document.getElementById("searchDay").value = ""
+          Swal.fire({
+            title: "Reserva eliminada!",
+            icon: "success"
+          });
+        }
+      });
+
     
 }
 
@@ -111,12 +166,22 @@ if (inputMonth && inputDay && searchBtn) {
         reservations = reservations ? JSON.parse(reservations) : [];
 
         if (!element || !(dayValue > 0 && dayValue <= element.days)) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "No tenemos disponible esa fecha!",
+              });
             message.innerHTML = `<p><br>No tenemos disponible</p>`;
         } else {
             const existingReservation = reservations.find(
                 (reserva) => reserva.month === monthValue && reserva.day === dayValue
             );
             if (existingReservation) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Ya hay una reserva para esa fecha ",
+                  });
                 message.innerHTML = `<p>Ya hay una reserva para el ${dayValue} de ${element.monthname}. Ingrese otra fecha</p>`;
             }
             else{
@@ -130,6 +195,13 @@ if (inputMonth && inputDay && searchBtn) {
 
                 reservations.push(reserva);
                 localStorage.setItem("reservations", JSON.stringify(reservations));
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Reservado",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 message.innerHTML = `<p>${nameValue} ${lastNameValue} tiene una reserva para el ${dayValue} de ${element.monthname}</p>`;
             }
         }

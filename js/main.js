@@ -72,7 +72,11 @@ function addReservationButton(){
 
             
             if(isNaN(quantity) || quantity < 1){
-               alert("ERRORR, aca va una card")
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Ingrese la cantidad de reserva que desea!",
+                  });
                 return
             }
 
