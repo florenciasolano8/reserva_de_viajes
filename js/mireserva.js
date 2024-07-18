@@ -94,8 +94,7 @@ function clearForm(){
 
         const name = document.getElementById("name").value
         const lastname = document.getElementById("lastname").value
-        const month = document.getElementById("searchMonth").value.toLowerCase()
-        const day = parseInt(document.getElementById("searchDay").value)
+        const date = document.getElementById("datePicker").value
     
         let reservations = localStorage.getItem("reservations")    
         reservations = reservations ? JSON.parse(reservations) : []     //ver esto 
@@ -103,8 +102,7 @@ function clearForm(){
         const reservationIndex = reservations.findIndex(reservation =>
             reservation.name === name &&
             reservation.lastName === lastname &&
-            reservation.month === month &&
-            reservation.day === day
+            reservation.date === date
         )
     
         if(reservationIndex !== -1){
@@ -113,8 +111,7 @@ function clearForm(){
         }
         document.getElementById("name").value = ""
         document.getElementById("lastname").value = ""
-        document.getElementById("searchMonth").value = ""
-        document.getElementById("searchDay").value = ""
+        document.getElementById("datePicker").value = ""
 
 
           Swal.fire({
@@ -131,50 +128,33 @@ reservationCart(reservationStorage);
 
 
 
-const months = [
-    { monthname: "enero", days: 31 },
-    { monthname: "febrero", days: 29 },
-    { monthname: "marzo", days: 31 },
-    { monthname: "abril", days: 30 },
-    { monthname: "mayo", days: 31 },
-    { monthname: "junio", days: 30 },
-    { monthname: "julio", days: 31 },
-    { monthname: "agosto", days: 31 },
-    { monthname: "septiembre", days: 30 },
-    { monthname: "octubre", days: 31 },
-    { monthname: "noviembre", days: 30 },
-    { monthname: "diciembre", days: 31 },
-];
 
 let inputName = document.getElementById("name");
 let inputLastName = document.getElementById("lastname");
-let inputMonth = document.getElementById("searchMonth");
-let inputDay = document.getElementById("searchDay");
+let inputDate = document.getElementById("datePicker");
 let searchBtn = document.getElementById("searchBtn");
+let message = document.getElementById("message")
 
-if (inputMonth && inputDay && searchBtn) {
+if (inputDate && searchBtn) {
     searchBtn.onclick = () => {
         const nameValue = inputName.value;
         const lastNameValue = inputLastName.value;
-        const monthValue = inputMonth.value.toLowerCase();
-        const dayValue = parseInt(inputDay.value);
-        const element = months.find(
-            (month) => month.monthname.toLowerCase() === monthValue
-        );
+        const dateValue = inputDate.value;
+
+      if(!nameValue || !lastNameValue ||!dateValue){
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Por favor completa todos los campos",
+        });
+        return
+      }
 
         let reservations = localStorage.getItem("reservations");
         reservations = reservations ? JSON.parse(reservations) : [];
 
-        if (!element || !(dayValue > 0 && dayValue <= element.days)) {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "No tenemos disponible esa fecha!",
-              });
-            message.innerHTML = `<p><br>No tenemos disponible</p>`;
-        } else {
-            const existingReservation = reservations.find(
-                (reserva) => reserva.month === monthValue && reserva.day === dayValue
+        const existingReservation = reservations.find(
+        (reserva) => reserva.date === dateValue
             );
             if (existingReservation) {
                 Swal.fire({
@@ -182,15 +162,14 @@ if (inputMonth && inputDay && searchBtn) {
                     title: "Oops...",
                     text: "Ya hay una reserva para esa fecha ",
                   });
-                message.innerHTML = `<p>Ya hay una reserva para el ${dayValue} de ${element.monthname}. Ingrese otra fecha</p>`;
+                message.innerHTML = `<p>Ya hay una reserva para el ${dateValue} . Ingrese otra fecha</p>`;
             }
             else{
 
                 const reserva = {
                     name: nameValue,
                     lastName: lastNameValue,
-                    month: monthValue,
-                    day: dayValue,
+                    date: dateValue,
                 };
 
                 reservations.push(reserva);
@@ -202,8 +181,10 @@ if (inputMonth && inputDay && searchBtn) {
                     showConfirmButton: false,
                     timer: 1500
                   });
-                message.innerHTML = `<p>${nameValue} ${lastNameValue} tiene una reserva para el ${dayValue} de ${element.monthname}</p>`;
-            }
+                message.innerHTML = `<p>${nameValue} ${lastNameValue} tiene una reserva para el ${dateValue} </p>`;
+          
+              }
         }
     };
-}
+
+ 
