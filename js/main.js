@@ -76,7 +76,7 @@ function addReservationButton(){
                     icon: "error",
                     title: "Oops...",
                     text: "Ingrese la cantidad de reserva que desea!",
-                  });
+                  })
                 return
             }
 
@@ -91,8 +91,22 @@ function addReservationButton(){
 
            }
            
-            console.log(cartPacks) 
             saveCartPacks()
+
+            Toastify({
+                text: "Reservado",
+                duration: 4000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", 
+                position: "right", 
+                stopOnFocus: true, 
+                style: {
+                  background: "linear-gradient(to right, #3a47b4, #a25be8)",
+                },
+                onClick: function(){} 
+              }).showToast()
        
        
         }
