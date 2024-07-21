@@ -32,6 +32,7 @@ function reservationCart(cartItems) {
     cart.appendChild(totalFinal)
 }
 
+
 function deleteAllCards() {
     Swal.fire({
         title: "Estas seguro?",
@@ -130,12 +131,15 @@ function clearForm(){
 
 reservationCart(reservationStorage)
 
-
-
+const {DateTime} = luxon
+const today = DateTime.now().toFormat('yyyy-MM-dd')
+const inputDate = document.getElementById('datePicker')
+if(inputDate){
+  inputDate.setAttribute('min',today)
+}
 
 let inputName = document.getElementById("name")
 let inputLastName = document.getElementById("lastname")
-let inputDate = document.getElementById("datePicker")
 let searchBtn = document.getElementById("searchBtn")
 let message = document.getElementById("message")
 
@@ -211,6 +215,7 @@ if (inputDate && searchBtn) {
           
               }
         }
+    
     }
  
     //Paso mi api de feriados al calendario de reservas
@@ -234,4 +239,7 @@ if (inputDate && searchBtn) {
     })
   
 
-
+    const now =DateTime.now()
+    const footer = document.getElementsByName('footer')
+    message.innerHTML = now.toLocaleString(DateTime.DATETIME_SHORT)
+    message.innerHTML = now.toFormat('dd/MM/yyyy HH:mm')
