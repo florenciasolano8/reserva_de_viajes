@@ -26,8 +26,9 @@ function reservationCart(cartItems) {
 
     const totalFinal = document.createElement("div")
     totalFinal.classList.add("totalfinal")
-    totalFinal.innerHTML = `<h3 class="subtitulopagar">TOTAL A PAGAR: $${totalToPay}</h3>
-                         <button class="button-clear btn " onclick="deleteAllCards()">Vaciar carrito</button>`
+    totalFinal.innerHTML = `
+                         <button class="button-clear btn " onclick="deleteAllCards()">Vaciar carrito</button>
+                         <h3 class="subtitulopagar">TOTAL A PAGAR: $${totalToPay}</h3>`
     cart.appendChild(totalFinal)
 }
 
@@ -138,6 +139,7 @@ let inputDate = document.getElementById("datePicker")
 let searchBtn = document.getElementById("searchBtn")
 let message = document.getElementById("message")
 
+
 if (inputDate && searchBtn) {
     searchBtn.onclick = () => {
         const nameValue = inputName.value
@@ -211,3 +213,25 @@ if (inputDate && searchBtn) {
         }
     }
  
+    //Paso mi api de feriados al calendario de reservas
+
+    fetch("../db/holidays.JSON")
+    .then(response => response.json())
+    .then(data =>{
+    const holidays= data.map(item=>item.fecha);
+    
+      inputDate.addEventListener('change', (event) =>{
+        const selectedDate = event.target.value
+        if(holidays.includes(selectedDate)){
+          Swal.fire({
+            icon:"error",
+            title:"Feriado"
+          }).then(()=>{
+            inputDate.value = ""
+          })
+        }
+      })
+    })
+  
+
+

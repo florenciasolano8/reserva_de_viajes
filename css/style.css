@@ -40,7 +40,7 @@ main {
   main h4 {
     display: flex;
     justify-content: center;
-    margin-top: -20px; }
+    margin-top: 60px; }
   main #packs, main #reservation {
     display: flex;
     justify-content: center;
@@ -124,12 +124,15 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column; }
+    main .totalfinal .subtitulopagar {
+      margin-top: -5px;
+      font-style: italic; }
     main .totalfinal .button-clear {
       margin-bottom: 30px;
       background-color: #4A249D;
       border-radius: 65%;
       color: white;
-      margin-top: 10px;
+      margin-top: 5px;
       transition: 1s; }
       main .totalfinal .button-clear:hover {
         background-color: #007bff; }
@@ -137,7 +140,11 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; }
+    flex-direction: column;
+    gap: 5px; }
+    main .form .input {
+      border: 1px, solid #ccc;
+      border-radius: 10px; }
   main .botonreserva {
     display: flex;
     justify-content: center;

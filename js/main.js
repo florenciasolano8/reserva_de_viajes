@@ -1,27 +1,3 @@
-const packs = [
-{
-    id: 1,
-    image: "img/aventuraenlanaturaleza.png" ,
-    title:"Aventura y Naturaleza",
-    duration: "14 dias",
-    price: 5000
-},
-{
-    id: 2,
-    image: "img/culturaytradicion.png" ,
-    title:"Cultura y Tradición",
-    duration: "12 dias",
-    price: 5100
-},
-{
-    id: 3,
-    image: "img/relaxybienestar.png" ,
-    title:"Relax y Bienestar",
-    duration: "10 dias",
-    price: 6000
-}
-]
-
 let cartPacks = loadCartPacks()
 
 function loadCartPacks(){
@@ -34,12 +10,11 @@ function saveCartPacks(){
 }
 
 
-
-
-function showpacks (itemsArray){
-    let combos = document.getElementById("packs")
-    combos.innerHTML=""
-    itemsArray.forEach(item =>{
+let combos = document.getElementById("packs")
+fetch("../db/data.JSON")
+    .then(response => response.json())
+    .then(packs =>{
+       packs.forEach(item =>{
         const card = document.createElement("div")
         card.classList.add("card")
         card.innerHTML = `
@@ -56,11 +31,15 @@ function showpacks (itemsArray){
                         </div>`
                         combos.appendChild(card)    
     })
-    addReservationButton()
-}
-showpacks(packs)
+    addReservationButton(packs)
+})
 
-function addReservationButton(){
+.catch(error=>{
+    console.error('error',error)
+})
+
+
+function addReservationButton(packs){
     addButton = document.querySelectorAll(".packReserve")
     addButton.forEach(button=>{
         button.onclick = (e)=>{
