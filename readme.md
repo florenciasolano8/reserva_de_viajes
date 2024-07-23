@@ -1,3 +1,6 @@
 # RESERVA FECHA DE VIAJES
-## Segunda entrega 
-La idea  es realizar una reserva de viajes que ofrezca 3 packs.Podemos ver las reservas realizadas y no se puede hacer mas de 1 reserva el mismo dia.
+## funcionamiento general
+Podes elegir un pack de viaje que te ofrecemos luego completas tus datos,fecha y reservas!
+## detalles
+Los dias feriados del 2024 y 2025 no estan disponibles..
+Podes borrar tu reserva en el momento al hacer click en borrar reserva o en otro momento deseeado ingresando tus datos de reserva y luego clickeando borrar reserva 
