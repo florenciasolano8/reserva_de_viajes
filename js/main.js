@@ -34,9 +34,7 @@ fetch("./db/packs.JSON")
         addReservationButton(packs)
     })
 
-    .catch(error => {
-        console.error('error', error)
-    })
+
 
 
 function addReservationButton(packs) {

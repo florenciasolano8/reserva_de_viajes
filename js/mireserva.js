@@ -5,8 +5,11 @@ let cart = document.getElementById("reservation")
 
 function reservationCart(cartItems) {
   let totalToPay = 0
+  let err = ""
   const cardsContainer = document.createElement("div")
   cardsContainer.classList.add("cards-container")
+
+  try{
   cartItems.forEach((item, index) => {
     const card = document.createElement("div")
     const total = item.price * item.quantity
@@ -21,6 +24,10 @@ function reservationCart(cartItems) {
                         </div>`
     cardsContainer.appendChild(card)
   })
+}catch(error){
+  console.error("Error al generar las tarjetas",error)
+  err=error
+}
   cart.appendChild(cardsContainer)
 
 
@@ -131,6 +138,8 @@ function clearForm() {
 
 reservationCart(reservationStorage)
 
+/* The minimum day for booking is today. */
+
 const { DateTime } = luxon
 const today = DateTime.now().toFormat('yyyy-MM-dd')
 const inputDate = document.getElementById('datePicker')
@@ -138,11 +147,12 @@ if (inputDate) {
   inputDate.setAttribute('min', today)
 }
 
+
+
 let inputName = document.getElementById("name")
 let inputLastName = document.getElementById("lastname")
 let searchBtn = document.getElementById("searchBtn")
 let message = document.getElementById("message")
-
 
 if (inputDate && searchBtn) {
   searchBtn.onclick = () => {
@@ -218,7 +228,7 @@ if (inputDate && searchBtn) {
 
 }
 
-//Paso mi api de feriados al calendario de reservas
+/* I'll integrate my holidays API into the booking calendar.*/
 
 fetch("../db/holidays.JSON")
   .then(response => response.json())
@@ -238,6 +248,7 @@ fetch("../db/holidays.JSON")
     })
   })
 
+/*show current time with Luxon*/
 
 const now = DateTime.now()
 const footer = document.getElementsByName('footer')
